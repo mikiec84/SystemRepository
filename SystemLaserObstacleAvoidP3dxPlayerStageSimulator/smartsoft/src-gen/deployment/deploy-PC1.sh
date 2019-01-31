@@ -97,12 +97,12 @@ src-gen/deployment/ns_config.ini
 src/ComponentLaserObstacleAvoid_data
 src/startstop-hooks-ComponentLaserObstacleAvoid.sh
 $SMART_ROOT_ACE/bin/ComponentLaserObstacleAvoid
-src-gen/deployment/ComponentLaserObstacleAvoid.ini
+src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
 $SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 src/ComponentPlayerStageSimulator_data
 src/startstop-hooks-ComponentPlayerStageSimulator.sh
 $SMART_ROOT_ACE/bin/ComponentPlayerStageSimulator
-src-gen/deployment/ComponentPlayerStageSimulator.ini
+src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
 $SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 
 $DEPLOY_LIBRARIES_USER

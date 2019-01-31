@@ -97,12 +97,12 @@ src-gen/deployment/ns_config.ini
 src/ComponentLaserObstacleAvoid_data
 src/startstop-hooks-ComponentLaserObstacleAvoid.sh
 $SMART_ROOT_ACE/bin/ComponentLaserObstacleAvoid
-src-gen/deployment/ComponentLaserObstacleAvoid.ini
+src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
 $SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 src/SmartGazeboBaseServer_data
 src/startstop-hooks-SmartGazeboBaseServer.sh
 $SMART_ROOT_ACE/bin/SmartGazeboBaseServer
-src-gen/deployment/SmartGazeboBaseServer.ini
+src-gen/combined-ini-files/SmartGazeboBaseServer.ini
 $SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 
 $DEPLOY_LIBRARIES_USER

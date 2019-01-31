@@ -18,13 +18,21 @@
 # This script collects the generated ini-file parts and combines them into single ini-files (one for each component artefact)
 #
 
+# create subfolder combined-ini-files (if not yet created)
+echo "create subfolder src-gen/combined-ini-files"
+mkdir -p src-gen/combined-ini-files
+
+# clean-up old combined-ini-files before they are generated again
+echo "clean-up src-gen/combined-ini-files subfolder"
+rm src-gen/combined-ini-files/*.ini
+
 # create ini-file ComponentLaserObstacleAvoid.ini
 echo "create ini-file ComponentLaserObstacleAvoid.ini"
-cp src-gen/system/ComponentLaserObstacleAvoid.ini src-gen/deployment/
-cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/deployment/ComponentLaserObstacleAvoid.ini
+cp src-gen/system/ComponentLaserObstacleAvoid.ini src-gen/combined-ini-files/
+cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
 
 # create ini-file ComponentPlayerStageSimulator.ini
 echo "create ini-file ComponentPlayerStageSimulator.ini"
-cp src-gen/system/ComponentPlayerStageSimulator.ini src-gen/deployment/
-cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/deployment/ComponentPlayerStageSimulator.ini
+cp src-gen/system/ComponentPlayerStageSimulator.ini src-gen/combined-ini-files/
+cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
 

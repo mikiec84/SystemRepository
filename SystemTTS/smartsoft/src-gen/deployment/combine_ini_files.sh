@@ -18,13 +18,21 @@
 # This script collects the generated ini-file parts and combines them into single ini-files (one for each component artefact)
 #
 
+# create subfolder combined-ini-files (if not yet created)
+echo "create subfolder src-gen/combined-ini-files"
+mkdir -p src-gen/combined-ini-files
+
+# clean-up old combined-ini-files before they are generated again
+echo "clean-up src-gen/combined-ini-files subfolder"
+rm src-gen/combined-ini-files/*.ini
+
 # create ini-file ComponentTTS.ini
 echo "create ini-file ComponentTTS.ini"
-cp src-gen/system/ComponentTTS.ini src-gen/deployment/
-cat src-gen/params/ComponentTTS.ini >> src-gen/deployment/ComponentTTS.ini
+cp src-gen/system/ComponentTTS.ini src-gen/combined-ini-files/
+cat src-gen/params/ComponentTTS.ini >> src-gen/combined-ini-files/ComponentTTS.ini
 
 # create ini-file ComponentTTSClient.ini
 echo "create ini-file ComponentTTSClient.ini"
-cp src-gen/system/ComponentTTSClient.ini src-gen/deployment/
-cat src-gen/params/ComponentTTSClient.ini >> src-gen/deployment/ComponentTTSClient.ini
+cp src-gen/system/ComponentTTSClient.ini src-gen/combined-ini-files/
+cat src-gen/params/ComponentTTSClient.ini >> src-gen/combined-ini-files/ComponentTTSClient.ini
 

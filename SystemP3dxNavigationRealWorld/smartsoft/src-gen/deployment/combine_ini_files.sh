@@ -18,33 +18,41 @@
 # This script collects the generated ini-file parts and combines them into single ini-files (one for each component artefact)
 #
 
+# create subfolder combined-ini-files (if not yet created)
+echo "create subfolder src-gen/combined-ini-files"
+mkdir -p src-gen/combined-ini-files
+
+# clean-up old combined-ini-files before they are generated again
+echo "clean-up src-gen/combined-ini-files subfolder"
+rm src-gen/combined-ini-files/*.ini
+
 # create ini-file SmartCdlServer.ini
 echo "create ini-file SmartCdlServer.ini"
-cp src-gen/system/SmartCdlServer.ini src-gen/deployment/
-cat src-gen/params/SmartCdlServer.ini >> src-gen/deployment/SmartCdlServer.ini
+cp src-gen/system/SmartCdlServer.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartCdlServer.ini >> src-gen/combined-ini-files/SmartCdlServer.ini
 
 # create ini-file SmartLaserLMS200Server.ini
 echo "create ini-file SmartLaserLMS200Server.ini"
-cp src-gen/system/SmartLaserLMS200Server.ini src-gen/deployment/
-cat src-gen/params/SmartLaserLMS200Server.ini >> src-gen/deployment/SmartLaserLMS200Server.ini
+cp src-gen/system/SmartLaserLMS200Server.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartLaserLMS200Server.ini >> src-gen/combined-ini-files/SmartLaserLMS200Server.ini
 
 # create ini-file SmartMapperGridMap.ini
 echo "create ini-file SmartMapperGridMap.ini"
-cp src-gen/system/SmartMapperGridMap.ini src-gen/deployment/
-cat src-gen/params/SmartMapperGridMap.ini >> src-gen/deployment/SmartMapperGridMap.ini
+cp src-gen/system/SmartMapperGridMap.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartMapperGridMap.ini >> src-gen/combined-ini-files/SmartMapperGridMap.ini
 
 # create ini-file SmartPioneerBaseServer.ini
 echo "create ini-file SmartPioneerBaseServer.ini"
-cp src-gen/system/SmartPioneerBaseServer.ini src-gen/deployment/
-cat src-gen/params/SmartPioneerBaseServer.ini >> src-gen/deployment/SmartPioneerBaseServer.ini
+cp src-gen/system/SmartPioneerBaseServer.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartPioneerBaseServer.ini >> src-gen/combined-ini-files/SmartPioneerBaseServer.ini
 
 # create ini-file SmartPlannerBreadthFirstSearch.ini
 echo "create ini-file SmartPlannerBreadthFirstSearch.ini"
-cp src-gen/system/SmartPlannerBreadthFirstSearch.ini src-gen/deployment/
-cat src-gen/params/SmartPlannerBreadthFirstSearch.ini >> src-gen/deployment/SmartPlannerBreadthFirstSearch.ini
+cp src-gen/system/SmartPlannerBreadthFirstSearch.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartPlannerBreadthFirstSearch.ini >> src-gen/combined-ini-files/SmartPlannerBreadthFirstSearch.ini
 
 # create ini-file SmartRobotConsole.ini
 echo "create ini-file SmartRobotConsole.ini"
-cp src-gen/system/SmartRobotConsole.ini src-gen/deployment/
-cat src-gen/params/SmartRobotConsole.ini >> src-gen/deployment/SmartRobotConsole.ini
+cp src-gen/system/SmartRobotConsole.ini src-gen/combined-ini-files/
+cat src-gen/params/SmartRobotConsole.ini >> src-gen/combined-ini-files/SmartRobotConsole.ini
 
