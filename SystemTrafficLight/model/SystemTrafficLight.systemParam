@@ -1,0 +1,3 @@
+SystemParameterModel SystemTrafficLightParams extendsSystem SystemTrafficLight {
+
+}
