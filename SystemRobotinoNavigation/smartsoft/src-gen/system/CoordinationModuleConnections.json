@@ -1,0 +1,69 @@
+{
+	"modules-insts" : [
+	{
+		"coordination-module-inst" : {
+		"type" : "KBModule",
+		"inst-name" : "kbModInst",
+		"coordination-interfaces-instances" : [
+		{ "type" : "KBCoordinationService",
+		"inst-name" : "kb",
+		"component-inst" : "ComponentKB_11",
+		"services" : [{ "coordservice" : "kbQuery", "compservice" : "kbQuery"},{ "coordservice" : "kbEvent", "compservice" : "kbEventServer"}]
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "NavigationModule",
+		"inst-name" : "nav1",
+		"coordination-interfaces-instances" : [
+		{ "type" : "CdlCoordinationService",
+		"inst-name" : "cdl",
+		"component-inst" : "SmartCdlServer1",
+		"services" : [{ "coordservice" : "blockedEvent", "compservice" : "RobotBlockedEventServer"},{ "coordservice" : "goalEvent", "compservice" : "GoalEventServer"}]
+		} ,
+		{ "type" : "MapperCoordinationService",
+		"inst-name" : "mapper",
+		"component-inst" : "SmartMapperGridMap1",
+		"services" : []
+		} ,
+		{ "type" : "PlannerCoordinationService",
+		"inst-name" : "planner",
+		"component-inst" : "SmartPlannerBreadthFirstSearch1",
+		"services" : [{ "coordservice" : "plannerEvent", "compservice" : "PlannerEventServer"}]
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "LocalizationModule",
+		"inst-name" : "localizationModInst",
+		"coordination-interfaces-instances" : [
+		{ "type" : "LocalizationCoordinationService",
+		"inst-name" : "amcl1",
+		"component-inst" : "SmartAmcl",
+		"services" : [{ "coordservice" : "localizationEvent", "compservice" : "LocalizationEventServiceOut"}]
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "MobileBaseModule",
+		"inst-name" : "base",
+		"coordination-interfaces-instances" : [
+		{ "type" : "BaseCoordinationService",
+		"inst-name" : "base",
+		"component-inst" : "ComponentRobotinoBaseServer",
+		"services" : [{ "coordservice" : "baseState", "compservice" : "BaseStateQueryServiceAnsw"},{ "coordservice" : "bumperEvent", "compservice" : "BumperEventServiceOut"},{ "coordservice" : "batteryEvent", "compservice" : "BatteryEventServiceOut"}]
+		} 
+		]
+		}
+	}
+	]
+}

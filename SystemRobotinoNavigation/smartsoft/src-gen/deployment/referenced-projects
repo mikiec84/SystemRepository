@@ -1,0 +1,14 @@
+# This file is generated using the SmartMDSD Toolchain.
+# Any changes will be overwritten next time the deployment project
+# is deployed/run from within the SmartMDSD toolchain.
+
+REFERENCED_PROJECT_ComponentKB="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/ComponentKB"
+REFERENCED_PROJECT_ComponentLaserLMS1xx="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/ComponentLaserLMS1xx"
+REFERENCED_PROJECT_ComponentRobotinoBaseServer="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/ComponentRobotinoBaseServer"
+REFERENCED_PROJECT_ComponentTCLSequencer="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/ComponentTCLSequencer"
+REFERENCED_PROJECT_SmartAmcl="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartAmcl"
+REFERENCED_PROJECT_SmartCdlServer="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartCdlServer"
+REFERENCED_PROJECT_SmartJoystickNavigation="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartJoystickNavigation"
+REFERENCED_PROJECT_SmartJoystickServer="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartJoystickServer"
+REFERENCED_PROJECT_SmartMapperGridMap="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartMapperGridMap"
+REFERENCED_PROJECT_SmartPlannerBreadthFirstSearch="/home/lutz/SOFTWARE/smartsoft_ace_v3_dev/src/ComponentRepository/SmartPlannerBreadthFirstSearch"
