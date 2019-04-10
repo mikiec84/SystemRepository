@@ -1,18 +1,5 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+PROJECT(SystemTrafficLight)
 
-INCLUDE(ExternalProject)
-
-ExternalProject_Add(ComponentTrafficLightExternal
-	PREFIX ComponentTrafficLight
-	SOURCE_DIR "/home/stampfer/SOFTWARE/hiwi-shaplak/CodeForGit/RaspberryTutorial/ComponentTrafficLight/smartsoft"
-	BINARY_DIR "/home/stampfer/SOFTWARE/hiwi-shaplak/CodeForGit/RaspberryTutorial/ComponentTrafficLight/smartsoft/build"
-	INSTALL_COMMAND ""
-)
-
-ExternalProject_Add(ComponentTrafficLightTestExternal
-	PREFIX ComponentTrafficLightTest
-	SOURCE_DIR "/home/stampfer/SOFTWARE/hiwi-shaplak/CodeForGit/RaspberryTutorial/ComponentTrafficLightTest/smartsoft"
-	BINARY_DIR "/home/stampfer/SOFTWARE/hiwi-shaplak/CodeForGit/RaspberryTutorial/ComponentTrafficLightTest/smartsoft/build"
-	INSTALL_COMMAND ""
-)
-
+# this is a pseudo-target just to trigger CMake builder
+ADD_CUSTOM_TARGET(${PROJECT_NAME} ALL)

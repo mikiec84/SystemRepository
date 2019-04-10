@@ -37,6 +37,7 @@ echo Sourcing referenced projects
 source src-gen/deployment/referenced-projects
 
 DEPLOY_LIBRARIES_USER=""
+###############################
 echo "Sourcing pre-deployment script for ComponentTTS... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -60,7 +61,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentTTS"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTS="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentTTS $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTS "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for ComponentTTSClient... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -84,7 +100,21 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentTTSClient"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTSClient="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentTTSClient $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTSClient "
+#########################
+
 echo
+###############################
+ 
 
 
 DEPL_FILES="
@@ -138,6 +168,7 @@ else
 	
 	TMPDIR=$(mktemp -d --suffix=.deployment) || exit 1
 	echo "Temporary directory: $TMPDIR"
+	mkdir $TMPDIR/behaviorFiles
 	trap "rm -rf $TMPDIR" EXIT
 	
 	# collect files in $TMPDIR
@@ -148,13 +179,26 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentTTS" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentTTS $TMPDIR/ComponentTTS_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTS" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTS $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentTTS/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentTTS.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentTTSClient $TMPDIR/ComponentTTSClient_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentTTSClient" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentTTSClient $TMPDIR/ComponentTTSClient_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTSClient" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTTSClient $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentTTSClient/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentTTSClient.sh 2>/dev/null
+	
+	#collect and copy behavior related files
+	echo "Sourcing behavior files..."
+	test -f src-gen/deployment/deploy-behavior-files.sh && source src-gen/deployment/deploy-behavior-files.sh
+	
 	# actually deploy:
 	rsync -z -l -r -v --progress --exclude ".svn" -e ssh $TMPDIR/ $SSH_TARGET
 fi

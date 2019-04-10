@@ -29,10 +29,14 @@ rm src-gen/combined-ini-files/*.ini
 # create ini-file ComponentLaserObstacleAvoid.ini
 echo "create ini-file ComponentLaserObstacleAvoid.ini"
 cp src-gen/system/ComponentLaserObstacleAvoid.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
+if [ -f src-gen/params/ComponentLaserObstacleAvoid.ini ]; then
+  cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
+fi
 
 # create ini-file SmartGazeboBaseServer.ini
 echo "create ini-file SmartGazeboBaseServer.ini"
 cp src-gen/system/SmartGazeboBaseServer.ini src-gen/combined-ini-files/
-cat src-gen/params/SmartGazeboBaseServer.ini >> src-gen/combined-ini-files/SmartGazeboBaseServer.ini
+if [ -f src-gen/params/SmartGazeboBaseServer.ini ]; then
+  cat src-gen/params/SmartGazeboBaseServer.ini >> src-gen/combined-ini-files/SmartGazeboBaseServer.ini
+fi
 

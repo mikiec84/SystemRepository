@@ -29,10 +29,14 @@ rm src-gen/combined-ini-files/*.ini
 # create ini-file ComponentTTS.ini
 echo "create ini-file ComponentTTS.ini"
 cp src-gen/system/ComponentTTS.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentTTS.ini >> src-gen/combined-ini-files/ComponentTTS.ini
+if [ -f src-gen/params/ComponentTTS.ini ]; then
+  cat src-gen/params/ComponentTTS.ini >> src-gen/combined-ini-files/ComponentTTS.ini
+fi
 
 # create ini-file ComponentTTSClient.ini
 echo "create ini-file ComponentTTSClient.ini"
 cp src-gen/system/ComponentTTSClient.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentTTSClient.ini >> src-gen/combined-ini-files/ComponentTTSClient.ini
+if [ -f src-gen/params/ComponentTTSClient.ini ]; then
+  cat src-gen/params/ComponentTTSClient.ini >> src-gen/combined-ini-files/ComponentTTSClient.ini
+fi
 

@@ -29,5 +29,7 @@ rm src-gen/combined-ini-files/*.ini
 # create ini-file ComponentTrafficLightTest.ini
 echo "create ini-file ComponentTrafficLightTest.ini"
 cp src-gen/system/ComponentTrafficLightTest.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentTrafficLightTest.ini >> src-gen/combined-ini-files/ComponentTrafficLightTest.ini
+if [ -f src-gen/params/ComponentTrafficLightTest.ini ]; then
+  cat src-gen/params/ComponentTrafficLightTest.ini >> src-gen/combined-ini-files/ComponentTrafficLightTest.ini
+fi
 

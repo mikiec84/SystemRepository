@@ -37,6 +37,7 @@ echo Sourcing referenced projects
 source src-gen/deployment/referenced-projects
 
 DEPLOY_LIBRARIES_USER=""
+###############################
 echo "Sourcing pre-deployment script for ComponentLaserObstacleAvoid... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -60,7 +61,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentLaserObstacleAvoid"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserObstacleAvoid="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentLaserObstacleAvoid $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserObstacleAvoid "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for ComponentPlayerStageSimulator... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -84,7 +100,21 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentPlayerStageSimulator"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentPlayerStageSimulator $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator "
+#########################
+
 echo
+###############################
+ 
 
 
 DEPL_FILES="
@@ -136,6 +166,7 @@ else
 	
 	TMPDIR=$(mktemp -d --suffix=.deployment) || exit 1
 	echo "Temporary directory: $TMPDIR"
+	mkdir $TMPDIR/behaviorFiles
 	trap "rm -rf $TMPDIR" EXIT
 	
 	# collect files in $TMPDIR
@@ -146,13 +177,26 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserObstacleAvoid" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserObstacleAvoid $TMPDIR/ComponentLaserObstacleAvoid_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserObstacleAvoid" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserObstacleAvoid $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentLaserObstacleAvoid/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentLaserObstacleAvoid.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentPlayerStageSimulator $TMPDIR/ComponentPlayerStageSimulator_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentPlayerStageSimulator" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentPlayerStageSimulator $TMPDIR/ComponentPlayerStageSimulator_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentPlayerStageSimulator/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentPlayerStageSimulator.sh 2>/dev/null
+	
+	#collect and copy behavior related files
+	echo "Sourcing behavior files..."
+	test -f src-gen/deployment/deploy-behavior-files.sh && source src-gen/deployment/deploy-behavior-files.sh
+	
 	# actually deploy:
 	rsync -z -l -r -v --progress --exclude ".svn" -e ssh $TMPDIR/ $SSH_TARGET
 fi

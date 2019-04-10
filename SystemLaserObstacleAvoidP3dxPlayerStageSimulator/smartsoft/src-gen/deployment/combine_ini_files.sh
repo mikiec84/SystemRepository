@@ -29,10 +29,14 @@ rm src-gen/combined-ini-files/*.ini
 # create ini-file ComponentLaserObstacleAvoid.ini
 echo "create ini-file ComponentLaserObstacleAvoid.ini"
 cp src-gen/system/ComponentLaserObstacleAvoid.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
+if [ -f src-gen/params/ComponentLaserObstacleAvoid.ini ]; then
+  cat src-gen/params/ComponentLaserObstacleAvoid.ini >> src-gen/combined-ini-files/ComponentLaserObstacleAvoid.ini
+fi
 
 # create ini-file ComponentPlayerStageSimulator.ini
 echo "create ini-file ComponentPlayerStageSimulator.ini"
 cp src-gen/system/ComponentPlayerStageSimulator.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
+if [ -f src-gen/params/ComponentPlayerStageSimulator.ini ]; then
+  cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
+fi
 

@@ -37,6 +37,7 @@ echo Sourcing referenced projects
 source src-gen/deployment/referenced-projects
 
 DEPLOY_LIBRARIES_USER=""
+###############################
 echo "Sourcing pre-deployment script for ComponentPlayerStageSimulator... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -60,7 +61,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentPlayerStageSimulator"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentPlayerStageSimulator $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for SmartCdlServer... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -84,7 +100,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_SmartCdlServer"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartCdlServer="$DEPLOY_COMPONENT_TCL_MODEL_FILES_SmartCdlServer $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartCdlServer "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for SmartMapperGridMap... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -108,7 +139,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_SmartMapperGridMap"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartMapperGridMap="$DEPLOY_COMPONENT_TCL_MODEL_FILES_SmartMapperGridMap $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartMapperGridMap "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for SmartPlannerBreadthFirstSearch... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -132,7 +178,22 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_SmartPlannerBreadthFirstSearch"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartPlannerBreadthFirstSearch="$DEPLOY_COMPONENT_TCL_MODEL_FILES_SmartPlannerBreadthFirstSearch $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartPlannerBreadthFirstSearch "
+#########################
+
 echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for SmartRobotConsole... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -156,7 +217,21 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_SmartRobotConsole"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole="$DEPLOY_COMPONENT_TCL_MODEL_FILES_SmartRobotConsole $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole "
+#########################
+
 echo
+###############################
+ 
 
 
 DEPL_FILES="
@@ -227,6 +302,7 @@ else
 	
 	TMPDIR=$(mktemp -d --suffix=.deployment) || exit 1
 	echo "Temporary directory: $TMPDIR"
+	mkdir $TMPDIR/behaviorFiles
 	trap "rm -rf $TMPDIR" EXIT
 	
 	# collect files in $TMPDIR
@@ -237,10 +313,18 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentPlayerStageSimulator" = "" ]; the
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentPlayerStageSimulator $TMPDIR/ComponentPlayerStageSimulator_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentPlayerStageSimulator $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentPlayerStageSimulator/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentPlayerStageSimulator.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_SmartCdlServer $TMPDIR/SmartCdlServer_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_SmartCdlServer" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_SmartCdlServer $TMPDIR/SmartCdlServer_data/ 2>&1
+fi
+
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartCdlServer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartCdlServer $TMPDIR/behaviorFiles/ 2>&1
 fi
 
 cp -v $REFERENCED_PROJECT_SmartCdlServer/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-SmartCdlServer.sh 2>/dev/null
@@ -249,10 +333,18 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_SmartMapperGridMap" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_SmartMapperGridMap $TMPDIR/SmartMapperGridMap_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartMapperGridMap" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartMapperGridMap $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_SmartMapperGridMap/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-SmartMapperGridMap.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_SmartPlannerBreadthFirstSearch $TMPDIR/SmartPlannerBreadthFirstSearch_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_SmartPlannerBreadthFirstSearch" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_SmartPlannerBreadthFirstSearch $TMPDIR/SmartPlannerBreadthFirstSearch_data/ 2>&1
+fi
+
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartPlannerBreadthFirstSearch" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartPlannerBreadthFirstSearch $TMPDIR/behaviorFiles/ 2>&1
 fi
 
 cp -v $REFERENCED_PROJECT_SmartPlannerBreadthFirstSearch/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-SmartPlannerBreadthFirstSearch.sh 2>/dev/null
@@ -261,7 +353,16 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole $TMPDIR/SmartRobotConsole_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_SmartRobotConsole/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-SmartRobotConsole.sh 2>/dev/null
+	
+	#collect and copy behavior related files
+	echo "Sourcing behavior files..."
+	test -f src-gen/deployment/deploy-behavior-files.sh && source src-gen/deployment/deploy-behavior-files.sh
+	
 	# actually deploy:
 	rsync -z -l -r -v --progress --exclude ".svn" -e ssh $TMPDIR/ $SSH_TARGET
 fi

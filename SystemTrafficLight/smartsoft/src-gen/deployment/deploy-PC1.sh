@@ -37,6 +37,7 @@ echo Sourcing referenced projects
 source src-gen/deployment/referenced-projects
 
 DEPLOY_LIBRARIES_USER=""
+###############################
 echo "Sourcing pre-deployment script for ComponentTrafficLightTest... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -60,7 +61,21 @@ for I in $DEPLOY_COMPONENT_FILES; do
 	fi
 done
 
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentTrafficLightTest"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTrafficLightTest="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentTrafficLightTest $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTrafficLightTest "
+#########################
+
 echo
+###############################
+ 
 
 
 DEPL_FILES="
@@ -107,6 +122,7 @@ else
 	
 	TMPDIR=$(mktemp -d --suffix=.deployment) || exit 1
 	echo "Temporary directory: $TMPDIR"
+	mkdir $TMPDIR/behaviorFiles
 	trap "rm -rf $TMPDIR" EXIT
 	
 	# collect files in $TMPDIR
@@ -117,7 +133,16 @@ if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentTrafficLightTest" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentTrafficLightTest $TMPDIR/ComponentTrafficLightTest_data/ 2>&1
 fi
 
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTrafficLightTest" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTrafficLightTest $TMPDIR/behaviorFiles/ 2>&1
+fi
+
 cp -v $REFERENCED_PROJECT_ComponentTrafficLightTest/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentTrafficLightTest.sh 2>/dev/null
+	
+	#collect and copy behavior related files
+	echo "Sourcing behavior files..."
+	test -f src-gen/deployment/deploy-behavior-files.sh && source src-gen/deployment/deploy-behavior-files.sh
+	
 	# actually deploy:
 	rsync -z -l -r -v --progress --exclude ".svn" -e ssh $TMPDIR/ $SSH_TARGET
 fi

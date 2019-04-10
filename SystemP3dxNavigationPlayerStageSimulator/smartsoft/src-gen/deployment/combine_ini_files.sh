@@ -29,25 +29,35 @@ rm src-gen/combined-ini-files/*.ini
 # create ini-file ComponentPlayerStageSimulator.ini
 echo "create ini-file ComponentPlayerStageSimulator.ini"
 cp src-gen/system/ComponentPlayerStageSimulator.ini src-gen/combined-ini-files/
-cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
+if [ -f src-gen/params/ComponentPlayerStageSimulator.ini ]; then
+  cat src-gen/params/ComponentPlayerStageSimulator.ini >> src-gen/combined-ini-files/ComponentPlayerStageSimulator.ini
+fi
 
 # create ini-file SmartCdlServer.ini
 echo "create ini-file SmartCdlServer.ini"
 cp src-gen/system/SmartCdlServer.ini src-gen/combined-ini-files/
-cat src-gen/params/SmartCdlServer.ini >> src-gen/combined-ini-files/SmartCdlServer.ini
+if [ -f src-gen/params/SmartCdlServer.ini ]; then
+  cat src-gen/params/SmartCdlServer.ini >> src-gen/combined-ini-files/SmartCdlServer.ini
+fi
 
 # create ini-file SmartMapperGridMap.ini
 echo "create ini-file SmartMapperGridMap.ini"
 cp src-gen/system/SmartMapperGridMap.ini src-gen/combined-ini-files/
-cat src-gen/params/SmartMapperGridMap.ini >> src-gen/combined-ini-files/SmartMapperGridMap.ini
+if [ -f src-gen/params/SmartMapperGridMap.ini ]; then
+  cat src-gen/params/SmartMapperGridMap.ini >> src-gen/combined-ini-files/SmartMapperGridMap.ini
+fi
 
 # create ini-file SmartPlannerBreadthFirstSearch.ini
 echo "create ini-file SmartPlannerBreadthFirstSearch.ini"
 cp src-gen/system/SmartPlannerBreadthFirstSearch.ini src-gen/combined-ini-files/
-cat src-gen/params/SmartPlannerBreadthFirstSearch.ini >> src-gen/combined-ini-files/SmartPlannerBreadthFirstSearch.ini
+if [ -f src-gen/params/SmartPlannerBreadthFirstSearch.ini ]; then
+  cat src-gen/params/SmartPlannerBreadthFirstSearch.ini >> src-gen/combined-ini-files/SmartPlannerBreadthFirstSearch.ini
+fi
 
 # create ini-file SmartRobotConsole.ini
 echo "create ini-file SmartRobotConsole.ini"
 cp src-gen/system/SmartRobotConsole.ini src-gen/combined-ini-files/
-cat src-gen/params/SmartRobotConsole.ini >> src-gen/combined-ini-files/SmartRobotConsole.ini
+if [ -f src-gen/params/SmartRobotConsole.ini ]; then
+  cat src-gen/params/SmartRobotConsole.ini >> src-gen/combined-ini-files/SmartRobotConsole.ini
+fi
 

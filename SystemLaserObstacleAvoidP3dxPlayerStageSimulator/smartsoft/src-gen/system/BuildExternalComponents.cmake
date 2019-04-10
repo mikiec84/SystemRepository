@@ -1,18 +1,5 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+PROJECT(SystemLaserObstacleAvoidP3dxPlayerStageSimulator)
 
-INCLUDE(ExternalProject)
-
-ExternalProject_Add(ComponentLaserObstacleAvoidExternal
-	PREFIX ComponentLaserObstacleAvoid
-	SOURCE_DIR "/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/github/ComponentRepository/ComponentLaserObstacleAvoid/smartsoft"
-	BINARY_DIR "/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/github/ComponentRepository/ComponentLaserObstacleAvoid/smartsoft/build"
-	INSTALL_COMMAND ""
-)
-
-ExternalProject_Add(ComponentPlayerStageSimulatorExternal
-	PREFIX ComponentPlayerStageSimulator
-	SOURCE_DIR "/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/github/ComponentRepository/ComponentPlayerStageSimulator/smartsoft"
-	BINARY_DIR "/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/github/ComponentRepository/ComponentPlayerStageSimulator/smartsoft/build"
-	INSTALL_COMMAND ""
-)
-
+# this is a pseudo-target just to trigger CMake builder
+ADD_CUSTOM_TARGET(${PROJECT_NAME} ALL)
