@@ -1,0 +1,28 @@
+SystemParameterModel SystemComparingGamppingHokuyoVsRealSense extendsSystem SystemComparingGamppingHokuyoVsRealSense {
+	ComponentParameterInstance ComponentVisualization refinesParamStruct ComponentVisualizationParams { 
+		ParameterRefinement Services {	simple_laser_visualization = false 	}
+	}
+ 	ComponentParameterInstance ComponentRobotinoLaserServer refinesParamStruct ComponentRobotinoLaserServer { } 
+
+ComponentParameterInstance ComponentVisualization2 refinesParamStruct ComponentVisualizationParams { 
+	ParameterRefinement Services {
+		simple_laser_visualization= false
+	}
+	
+}
+
+ComponentParameterInstance ComponentRealSenseV2Server refinesParamStruct ComponentRealSenseV2ServerParams { 
+	ParameterRefinement base {
+		on_base = true
+		on_manipulator = false
+			on_ptu = false
+			on_ur = false
+			x = 0
+			y = 0
+			z = 0
+			base_a = 0
+			steer_a = 0
+	}
+	
+}
+ }
