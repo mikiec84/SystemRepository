@@ -1818,7 +1818,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']/@ownedRepresentations[name='SystemArchitectureDiagram']/@defaultLayer/@containerMappings[name='ComponentInstanceContainer']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']/@ownedRepresentations[name='SystemArchitectureDiagram']/@defaultLayer/@containerMappings[name='ComponentInstanceContainer']"/>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kI21oGf3Eem0LbkqA-ZnmQ" name="ComponentRealSenseV2Server" tooltipText="ParameterStructInstance">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kI21oGf3Eem0LbkqA-ZnmQ" name="ComponentVisualization2" tooltipText="ParameterStructInstance">
         <target xmi:type="SystemParameter:ParameterStructInstance" href="model/SystemComparingGamppingHokuyoVsRealSense.componentArch#//@components.2/@extensions.0"/>
         <semanticElements xmi:type="SystemParameter:ParameterStructInstance" href="model/SystemComparingGamppingHokuyoVsRealSense.componentArch#//@components.2/@extensions.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_kI21oWf3Eem0LbkqA-ZnmQ" borderSize="1" borderSizeComputationExpression="1">
@@ -2384,7 +2384,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']/@ownedRepresentations[name='SystemArchitectureDiagram']/@defaultLayer/@containerMappings[name='ComponentInstanceContainer']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']/@ownedRepresentations[name='SystemArchitectureDiagram']/@defaultLayer/@containerMappings[name='ComponentInstanceContainer']"/>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hJPrUGdyEem0LbkqA-ZnmQ" name="ComponentVisualization2" tooltipText="ParameterStructInstance">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hJPrUGdyEem0LbkqA-ZnmQ" name="ComponentRobotinoBaseServer" tooltipText="ParameterStructInstance">
         <target xmi:type="SystemParameter:ParameterStructInstance" href="model/SystemComparingGamppingHokuyoVsRealSense.componentArch#//@components.8/@extensions.0"/>
         <semanticElements xmi:type="SystemParameter:ParameterStructInstance" href="model/SystemComparingGamppingHokuyoVsRealSense.componentArch#//@components.8/@extensions.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_hJQSYGdyEem0LbkqA-ZnmQ" borderSize="1" borderSizeComputationExpression="1">
