@@ -116,6 +116,45 @@ echo
 ###############################
  
 ###############################
+echo "Sourcing pre-deployment script for ComponentKB... (errors might be ignored)"
+DEPLOY_LIBRARIES=""
+DEPLOY_COMPONENT_FILES=""
+source src/predeploy-ComponentKB.sh 2>&1
+
+for I in $DEPLOY_LIBRARIES; do
+	if [ -e "$SMART_ROOT_ACE/bin/$I" ]; then
+		FILE="$SMART_ROOT_ACE/bin/$I"
+	else
+		FILE="$SMART_ROOT_ACE/lib/$I"
+	fi
+	DEPLOY_LIBRARIES_USER="$DEPLOY_LIBRARIES_USER $FILE"
+done
+
+DEPLOY_COMPONENT_FILES_PATHS_ComponentKB=""
+for I in $DEPLOY_COMPONENT_FILES; do
+	if ls $REFERENCED_PROJECT_ComponentKB/$I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentKB="$DEPLOY_COMPONENT_FILES_PATHS_ComponentKB $REFERENCED_PROJECT_ComponentKB/$I"
+	elif ls $I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentKB="$DEPLOY_COMPONENT_FILES_PATHS_ComponentKB $I"
+	fi
+done
+
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentKB"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentKB="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentKB $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentKB "
+#########################
+
+echo
+###############################
+ 
+###############################
 echo "Sourcing pre-deployment script for ComponentLaserFromRGBDServer... (errors might be ignored)"
 DEPLOY_LIBRARIES=""
 DEPLOY_COMPONENT_FILES=""
@@ -130,25 +169,25 @@ for I in $DEPLOY_LIBRARIES; do
 	DEPLOY_LIBRARIES_USER="$DEPLOY_LIBRARIES_USER $FILE"
 done
 
-DEPLOY_COMPONENT_FILES_PATHS_=""
+DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer=""
 for I in $DEPLOY_COMPONENT_FILES; do
-	if ls $REFERENCED_PROJECT_/$I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $REFERENCED_PROJECT_/$I"
+	if ls $REFERENCED_PROJECT_ComponentLaserFromRGBDServer/$I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer $REFERENCED_PROJECT_ComponentLaserFromRGBDServer/$I"
 	elif ls $I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $I"
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer $I"
 	fi
 done
 
 #########################
 ## BEHAVIOR FILES
 shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
-for entry in "$REFERENCED_PROJECT_"/model/*.smartTcl
+for entry in "$REFERENCED_PROJECT_ComponentLaserFromRGBDServer"/model/*.smartTcl
 do
-  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ $entry"
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserFromRGBDServer="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentLaserFromRGBDServer $entry"
 done
 [ $changed ] && shopt -u nullglob; unset changed
 
-echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ "
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserFromRGBDServer "
 #########################
 
 echo
@@ -247,25 +286,64 @@ for I in $DEPLOY_LIBRARIES; do
 	DEPLOY_LIBRARIES_USER="$DEPLOY_LIBRARIES_USER $FILE"
 done
 
-DEPLOY_COMPONENT_FILES_PATHS_=""
+DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer=""
 for I in $DEPLOY_COMPONENT_FILES; do
-	if ls $REFERENCED_PROJECT_/$I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $REFERENCED_PROJECT_/$I"
+	if ls $REFERENCED_PROJECT_ComponentRobotinoLaserServer/$I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer $REFERENCED_PROJECT_ComponentRobotinoLaserServer/$I"
 	elif ls $I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $I"
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer $I"
 	fi
 done
 
 #########################
 ## BEHAVIOR FILES
 shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
-for entry in "$REFERENCED_PROJECT_"/model/*.smartTcl
+for entry in "$REFERENCED_PROJECT_ComponentRobotinoLaserServer"/model/*.smartTcl
 do
-  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ $entry"
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentRobotinoLaserServer="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentRobotinoLaserServer $entry"
 done
 [ $changed ] && shopt -u nullglob; unset changed
 
-echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ "
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentRobotinoLaserServer "
+#########################
+
+echo
+###############################
+ 
+###############################
+echo "Sourcing pre-deployment script for ComponentTCLSequencer... (errors might be ignored)"
+DEPLOY_LIBRARIES=""
+DEPLOY_COMPONENT_FILES=""
+source src/predeploy-ComponentTCLSequencer.sh 2>&1
+
+for I in $DEPLOY_LIBRARIES; do
+	if [ -e "$SMART_ROOT_ACE/bin/$I" ]; then
+		FILE="$SMART_ROOT_ACE/bin/$I"
+	else
+		FILE="$SMART_ROOT_ACE/lib/$I"
+	fi
+	DEPLOY_LIBRARIES_USER="$DEPLOY_LIBRARIES_USER $FILE"
+done
+
+DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer=""
+for I in $DEPLOY_COMPONENT_FILES; do
+	if ls $REFERENCED_PROJECT_ComponentTCLSequencer/$I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer $REFERENCED_PROJECT_ComponentTCLSequencer/$I"
+	elif ls $I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer="$DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer $I"
+	fi
+done
+
+#########################
+## BEHAVIOR FILES
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+for entry in "$REFERENCED_PROJECT_ComponentTCLSequencer"/model/*.smartTcl
+do
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTCLSequencer="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ComponentTCLSequencer $entry"
+done
+[ $changed ] && shopt -u nullglob; unset changed
+
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTCLSequencer "
 #########################
 
 echo
@@ -364,25 +442,25 @@ for I in $DEPLOY_LIBRARIES; do
 	DEPLOY_LIBRARIES_USER="$DEPLOY_LIBRARIES_USER $FILE"
 done
 
-DEPLOY_COMPONENT_FILES_PATHS_=""
+DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole=""
 for I in $DEPLOY_COMPONENT_FILES; do
-	if ls $REFERENCED_PROJECT_/$I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $REFERENCED_PROJECT_/$I"
+	if ls $REFERENCED_PROJECT_SmartRobotConsole/$I > /dev/null 2>&1; then
+		DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole="$DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole $REFERENCED_PROJECT_SmartRobotConsole/$I"
 	elif ls $I > /dev/null 2>&1; then
-		DEPLOY_COMPONENT_FILES_PATHS_="$DEPLOY_COMPONENT_FILES_PATHS_ $I"
+		DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole="$DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole $I"
 	fi
 done
 
 #########################
 ## BEHAVIOR FILES
 shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
-for entry in "$REFERENCED_PROJECT_"/model/*.smartTcl
+for entry in "$REFERENCED_PROJECT_SmartRobotConsole"/model/*.smartTcl
 do
-  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_="$DEPLOY_COMPONENT_TCL_MODEL_FILES_ $entry"
+  DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole="$DEPLOY_COMPONENT_TCL_MODEL_FILES_SmartRobotConsole $entry"
 done
 [ $changed ] && shopt -u nullglob; unset changed
 
-echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ "
+echo "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole "
 #########################
 
 echo
@@ -409,10 +487,17 @@ $SMART_ROOT_ACE/bin/ComponentGMapping
 src-gen/combined-ini-files/ComponentGMapping_rs.ini
 $SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 $SMART_ROOT_ACE/lib/libCommNavigationObjects.so*
+src/ComponentKB_data
+src/startstop-hooks-ComponentKB.sh
+$SMART_ROOT_ACE/bin/ComponentKB
+src-gen/combined-ini-files/ComponentKB.ini
+$SMART_ROOT_ACE/lib/libCommBasicObjects.so*
 src/ComponentLaserFromRGBDServer_data
 src/startstop-hooks-ComponentLaserFromRGBDServer.sh
-$SMART_ROOT_ACE/bin/
+$SMART_ROOT_ACE/bin/ComponentLaserFromRGBDServer
 src-gen/combined-ini-files/ComponentLaserFromRGBDServer.ini
+$SMART_ROOT_ACE/lib/libCommBasicObjects.so*
+$SMART_ROOT_ACE/lib/libDomainVision.so*
 src/ComponentRealSenseV2Server_data
 src/startstop-hooks-ComponentRealSenseV2Server.sh
 $SMART_ROOT_ACE/bin/ComponentRealSenseV2Server
@@ -429,8 +514,13 @@ $SMART_ROOT_ACE/lib/libCommLocalizationObjects.so*
 $SMART_ROOT_ACE/lib/libCommRobotinoObjects.so*
 src/ComponentRobotinoLaserServer_data
 src/startstop-hooks-ComponentRobotinoLaserServer.sh
-$SMART_ROOT_ACE/bin/
+$SMART_ROOT_ACE/bin/ComponentRobotinoLaserServer
 src-gen/combined-ini-files/ComponentRobotinoLaserServer.ini
+$SMART_ROOT_ACE/lib/libCommBasicObjects.so*
+src/ComponentTCLSequencer_data
+src/startstop-hooks-ComponentTCLSequencer.sh
+$SMART_ROOT_ACE/bin/ComponentTCLSequencer
+src-gen/combined-ini-files/ComponentTCLSequencer.ini
 src/ComponentVisualization_data
 src/startstop-hooks-ComponentVisualization.sh
 $SMART_ROOT_ACE/bin/ComponentVisualization
@@ -449,7 +539,7 @@ $SMART_ROOT_ACE/lib/libCommTrackingObjects.so*
 $SMART_ROOT_ACE/lib/libDomainVision.so*
 src/SmartRobotConsole_data
 src/startstop-hooks-SmartRobotConsole.sh
-$SMART_ROOT_ACE/bin/
+$SMART_ROOT_ACE/bin/SmartRobotConsole
 src-gen/combined-ini-files/SmartRobotConsole.ini
 
 $DEPLOY_LIBRARIES_USER
@@ -509,16 +599,26 @@ if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentGMapping" = "" ]; then
 fi
 
 cp -v $REFERENCED_PROJECT_ComponentGMapping/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentGMapping.sh 2>/dev/null
-#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/ComponentLaserFromRGBDServer_data/
-if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/ComponentLaserFromRGBDServer_data/ 2>&1
+#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentKB $TMPDIR/ComponentKB_data/
+if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentKB" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentKB $TMPDIR/ComponentKB_data/ 2>&1
 fi
 
-if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ $TMPDIR/behaviorFiles/ 2>&1
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentKB" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentKB $TMPDIR/behaviorFiles/ 2>&1
 fi
 
-cp -v $REFERENCED_PROJECT_/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-.sh 2>/dev/null
+cp -v $REFERENCED_PROJECT_ComponentKB/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentKB.sh 2>/dev/null
+#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer $TMPDIR/ComponentLaserFromRGBDServer_data/
+if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentLaserFromRGBDServer $TMPDIR/ComponentLaserFromRGBDServer_data/ 2>&1
+fi
+
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserFromRGBDServer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentLaserFromRGBDServer $TMPDIR/behaviorFiles/ 2>&1
+fi
+
+cp -v $REFERENCED_PROJECT_ComponentLaserFromRGBDServer/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentLaserFromRGBDServer.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentRealSenseV2Server $TMPDIR/ComponentRealSenseV2Server_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentRealSenseV2Server" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentRealSenseV2Server $TMPDIR/ComponentRealSenseV2Server_data/ 2>&1
@@ -539,16 +639,26 @@ if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentRobotinoBaseServer" = ""
 fi
 
 cp -v $REFERENCED_PROJECT_ComponentRobotinoBaseServer/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentRobotinoBaseServer.sh 2>/dev/null
-#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/ComponentRobotinoLaserServer_data/
-if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/ComponentRobotinoLaserServer_data/ 2>&1
+#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer $TMPDIR/ComponentRobotinoLaserServer_data/
+if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentRobotinoLaserServer $TMPDIR/ComponentRobotinoLaserServer_data/ 2>&1
 fi
 
-if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ $TMPDIR/behaviorFiles/ 2>&1
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentRobotinoLaserServer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentRobotinoLaserServer $TMPDIR/behaviorFiles/ 2>&1
 fi
 
-cp -v $REFERENCED_PROJECT_/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-.sh 2>/dev/null
+cp -v $REFERENCED_PROJECT_ComponentRobotinoLaserServer/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentRobotinoLaserServer.sh 2>/dev/null
+#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer $TMPDIR/ComponentTCLSequencer_data/
+if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentTCLSequencer $TMPDIR/ComponentTCLSequencer_data/ 2>&1
+fi
+
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTCLSequencer" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentTCLSequencer $TMPDIR/behaviorFiles/ 2>&1
+fi
+
+cp -v $REFERENCED_PROJECT_ComponentTCLSequencer/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentTCLSequencer.sh 2>/dev/null
 #rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ComponentVisualization $TMPDIR/ComponentVisualization_data/
 if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_ComponentVisualization" = "" ]; then
 	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ComponentVisualization $TMPDIR/ComponentVisualization_data/ 2>&1
@@ -569,16 +679,16 @@ if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ComponentVisualization" = "" ]; t
 fi
 
 cp -v $REFERENCED_PROJECT_ComponentVisualization/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-ComponentVisualization.sh 2>/dev/null
-#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/SmartRobotConsole_data/
-if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_ $TMPDIR/SmartRobotConsole_data/ 2>&1
+#rsync -l -r -v --progress --exclude ".svn" $DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole $TMPDIR/SmartRobotConsole_data/
+if [ ! "$DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_FILES_PATHS_SmartRobotConsole $TMPDIR/SmartRobotConsole_data/ 2>&1
 fi
 
-if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_" = "" ]; then
-	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_ $TMPDIR/behaviorFiles/ 2>&1
+if [ ! "$DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole" = "" ]; then
+	cp -rv $DEPLOY_COMPONENT_BEHAVIOR_MODEL_FILES_SmartRobotConsole $TMPDIR/behaviorFiles/ 2>&1
 fi
 
-cp -v $REFERENCED_PROJECT_/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-.sh 2>/dev/null
+cp -v $REFERENCED_PROJECT_SmartRobotConsole/smartsoft/src/startstop-hooks.sh $TMPDIR/startstop-hooks-component-SmartRobotConsole.sh 2>/dev/null
 	
 	#collect and copy behavior related files
 	echo "Sourcing behavior files..."

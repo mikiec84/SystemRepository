@@ -91,6 +91,22 @@ cd $SCRIPT_DIR
 bash startstop-hooks-ComponentGMapping_rs.sh post-start
 echo -e "\n\n\n"
 
+# Component instance ComponentKB
+echo
+echo "############################################"
+echo "## Starting component instance ComponentKB"
+cd $SCRIPT_DIR
+echo "executing startstop-hooks-ComponentKB.sh (errors might be ignored)"
+bash startstop-hooks-ComponentKB.sh pre-start
+cd $SCRIPT_DIR/ComponentKB_data
+rm -f "../ComponentKB.log"
+xterm -l -lf "../ComponentKB.log" -title "ComponentKB@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ComponentKB -filename=$SCRIPT_DIR/ComponentKB.ini; echo; echo; echo 'ComponentKB exited.'; echo; /bin/bash --login" &
+echo $! >> $PID_XTERM
+echo ComponentKB >> $PID_COMPONENT_NAMES
+cd $SCRIPT_DIR
+bash startstop-hooks-ComponentKB.sh post-start
+echo -e "\n\n\n"
+
 # Component instance ComponentLaserFromRGBDServer
 echo
 echo "############################################"
@@ -100,9 +116,9 @@ echo "executing startstop-hooks-ComponentLaserFromRGBDServer.sh (errors might be
 bash startstop-hooks-ComponentLaserFromRGBDServer.sh pre-start
 cd $SCRIPT_DIR/ComponentLaserFromRGBDServer_data
 rm -f "../ComponentLaserFromRGBDServer.log"
-xterm -l -lf "../ComponentLaserFromRGBDServer.log" -title "ComponentLaserFromRGBDServer@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ -filename=$SCRIPT_DIR/ComponentLaserFromRGBDServer.ini; echo; echo; echo 'ComponentLaserFromRGBDServer exited.'; echo; /bin/bash --login" &
+xterm -l -lf "../ComponentLaserFromRGBDServer.log" -title "ComponentLaserFromRGBDServer@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ComponentLaserFromRGBDServer -filename=$SCRIPT_DIR/ComponentLaserFromRGBDServer.ini; echo; echo; echo 'ComponentLaserFromRGBDServer exited.'; echo; /bin/bash --login" &
 echo $! >> $PID_XTERM
-echo  >> $PID_COMPONENT_NAMES
+echo ComponentLaserFromRGBDServer >> $PID_COMPONENT_NAMES
 cd $SCRIPT_DIR
 bash startstop-hooks-ComponentLaserFromRGBDServer.sh post-start
 echo -e "\n\n\n"
@@ -148,11 +164,27 @@ echo "executing startstop-hooks-ComponentRobotinoLaserServer.sh (errors might be
 bash startstop-hooks-ComponentRobotinoLaserServer.sh pre-start
 cd $SCRIPT_DIR/ComponentRobotinoLaserServer_data
 rm -f "../ComponentRobotinoLaserServer.log"
-xterm -l -lf "../ComponentRobotinoLaserServer.log" -title "ComponentRobotinoLaserServer@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ -filename=$SCRIPT_DIR/ComponentRobotinoLaserServer.ini; echo; echo; echo 'ComponentRobotinoLaserServer exited.'; echo; /bin/bash --login" &
+xterm -l -lf "../ComponentRobotinoLaserServer.log" -title "ComponentRobotinoLaserServer@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ComponentRobotinoLaserServer -filename=$SCRIPT_DIR/ComponentRobotinoLaserServer.ini; echo; echo; echo 'ComponentRobotinoLaserServer exited.'; echo; /bin/bash --login" &
 echo $! >> $PID_XTERM
-echo  >> $PID_COMPONENT_NAMES
+echo ComponentRobotinoLaserServer >> $PID_COMPONENT_NAMES
 cd $SCRIPT_DIR
 bash startstop-hooks-ComponentRobotinoLaserServer.sh post-start
+echo -e "\n\n\n"
+
+# Component instance ComponentTCLSequencer
+echo
+echo "############################################"
+echo "## Starting component instance ComponentTCLSequencer"
+cd $SCRIPT_DIR
+echo "executing startstop-hooks-ComponentTCLSequencer.sh (errors might be ignored)"
+bash startstop-hooks-ComponentTCLSequencer.sh pre-start
+cd $SCRIPT_DIR/ComponentTCLSequencer_data
+rm -f "../ComponentTCLSequencer.log"
+xterm -l -lf "../ComponentTCLSequencer.log" -title "ComponentTCLSequencer@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ComponentTCLSequencer -filename=$SCRIPT_DIR/ComponentTCLSequencer.ini; echo; echo; echo 'ComponentTCLSequencer exited.'; echo; /bin/bash --login" &
+echo $! >> $PID_XTERM
+echo ComponentTCLSequencer >> $PID_COMPONENT_NAMES
+cd $SCRIPT_DIR
+bash startstop-hooks-ComponentTCLSequencer.sh post-start
 echo -e "\n\n\n"
 
 # Component instance ComponentVisualization
@@ -196,9 +228,9 @@ echo "executing startstop-hooks-SmartRobotConsole.sh (errors might be ignored)"
 bash startstop-hooks-SmartRobotConsole.sh pre-start
 cd $SCRIPT_DIR/SmartRobotConsole_data
 rm -f "../SmartRobotConsole.log"
-xterm -l -lf "../SmartRobotConsole.log" -title "SmartRobotConsole@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/ -filename=$SCRIPT_DIR/SmartRobotConsole.ini; echo; echo; echo 'SmartRobotConsole exited.'; echo; /bin/bash --login" &
+xterm -l -lf "../SmartRobotConsole.log" -title "SmartRobotConsole@c26_25_robotino3 Component" -hold -e "export LD_LIBRARY_PATH=$SCRIPT_DIR:\$LD_LIBRARY_PATH; $SCRIPT_DIR/SmartRobotConsole -filename=$SCRIPT_DIR/SmartRobotConsole.ini; echo; echo; echo 'SmartRobotConsole exited.'; echo; /bin/bash --login" &
 echo $! >> $PID_XTERM
-echo  >> $PID_COMPONENT_NAMES
+echo SmartRobotConsole >> $PID_COMPONENT_NAMES
 cd $SCRIPT_DIR
 bash startstop-hooks-SmartRobotConsole.sh post-start
 echo -e "\n\n\n"
@@ -215,10 +247,12 @@ stop)
 cd $SCRIPT_DIR
 bash startstop-hooks-ComponentGMapping.sh pre-stop
 bash startstop-hooks-ComponentGMapping_rs.sh pre-stop
+bash startstop-hooks-ComponentKB.sh pre-stop
 bash startstop-hooks-ComponentLaserFromRGBDServer.sh pre-stop
 bash startstop-hooks-ComponentRealSenseV2Server.sh pre-stop
 bash startstop-hooks-ComponentRobotinoBaseServer.sh pre-stop
 bash startstop-hooks-ComponentRobotinoLaserServer.sh pre-stop
+bash startstop-hooks-ComponentTCLSequencer.sh pre-stop
 bash startstop-hooks-ComponentVisualization.sh pre-stop
 bash startstop-hooks-ComponentVisualization2.sh pre-stop
 bash startstop-hooks-SmartRobotConsole.sh pre-stop
@@ -245,10 +279,12 @@ test -e SMART_NAMES && rm -f SMART_NAMES
 
 bash startstop-hooks-ComponentGMapping.sh post-stop
 bash startstop-hooks-ComponentGMapping_rs.sh post-stop
+bash startstop-hooks-ComponentKB.sh post-stop
 bash startstop-hooks-ComponentLaserFromRGBDServer.sh post-stop
 bash startstop-hooks-ComponentRealSenseV2Server.sh post-stop
 bash startstop-hooks-ComponentRobotinoBaseServer.sh post-stop
 bash startstop-hooks-ComponentRobotinoLaserServer.sh post-stop
+bash startstop-hooks-ComponentTCLSequencer.sh post-stop
 bash startstop-hooks-ComponentVisualization.sh post-stop
 bash startstop-hooks-ComponentVisualization2.sh post-stop
 bash startstop-hooks-SmartRobotConsole.sh post-stop

@@ -29,6 +29,83 @@
 			{ "result" : "SUCCESS", "result-value" : "OK" }
 		]
 	}
+},
+{"skill" :
+	{ 
+		"name" : "resetBase",
+		"skill-definition-fqn" : "CommNavigationObjects.MobileBaseModule.resetBase",
+		"in-attribute" : {
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+}
+]
+[
+{"skill" :
+	{ 
+		"name" : "startMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.startMapping",
+		"in-attribute" : {
+			"init_x" : "Double",
+			"init_y" : "Double",
+			"init_a" : "Double"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "stopMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.stopMapping",
+		"in-attribute" : {
+			"mapName" : "String",
+			"mapDirName" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "abortMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.abortMapping",
+		"in-attribute" : {
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "saveCurrentMap",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.saveCurrentMap",
+		"in-attribute" : {
+			"mapName" : "String",
+			"mapDirName" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
 }
 ]
 [
@@ -99,4 +176,70 @@
 		]
 	}
 }
+]
+[
+{"skill" :
+	{ 
+		"name" : "startMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.startMapping",
+		"in-attribute" : {
+			"init_x" : "Double",
+			"init_y" : "Double",
+			"init_a" : "Double"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "stopMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.stopMapping",
+		"in-attribute" : {
+			"mapName" : "String",
+			"mapDirName" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "abortMapping",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.abortMapping",
+		"in-attribute" : {
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "saveCurrentMap",
+		"skill-definition-fqn" : "CommLocalizationObjects.SlamModule.saveCurrentMap",
+		"in-attribute" : {
+			"mapName" : "String",
+			"mapDirName" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" },
+			{ "result" : "ERROR", "result-value" : "MAPPING NOT ACTIVE" }
+		]
+	}
+}
+]
+[
 ]

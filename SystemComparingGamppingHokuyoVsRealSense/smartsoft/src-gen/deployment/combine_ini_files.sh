@@ -40,6 +40,13 @@ if [ -f src-gen/params/ComponentGMapping_rs.ini ]; then
   cat src-gen/params/ComponentGMapping_rs.ini >> src-gen/combined-ini-files/ComponentGMapping_rs.ini
 fi
 
+# create ini-file ComponentKB.ini
+echo "create ini-file ComponentKB.ini"
+cp src-gen/system/ComponentKB.ini src-gen/combined-ini-files/
+if [ -f src-gen/params/ComponentKB.ini ]; then
+  cat src-gen/params/ComponentKB.ini >> src-gen/combined-ini-files/ComponentKB.ini
+fi
+
 # create ini-file ComponentLaserFromRGBDServer.ini
 echo "create ini-file ComponentLaserFromRGBDServer.ini"
 cp src-gen/system/ComponentLaserFromRGBDServer.ini src-gen/combined-ini-files/
@@ -66,6 +73,13 @@ echo "create ini-file ComponentRobotinoLaserServer.ini"
 cp src-gen/system/ComponentRobotinoLaserServer.ini src-gen/combined-ini-files/
 if [ -f src-gen/params/ComponentRobotinoLaserServer.ini ]; then
   cat src-gen/params/ComponentRobotinoLaserServer.ini >> src-gen/combined-ini-files/ComponentRobotinoLaserServer.ini
+fi
+
+# create ini-file ComponentTCLSequencer.ini
+echo "create ini-file ComponentTCLSequencer.ini"
+cp src-gen/system/ComponentTCLSequencer.ini src-gen/combined-ini-files/
+if [ -f src-gen/params/ComponentTCLSequencer.ini ]; then
+  cat src-gen/params/ComponentTCLSequencer.ini >> src-gen/combined-ini-files/ComponentTCLSequencer.ini
 fi
 
 # create ini-file ComponentVisualization.ini

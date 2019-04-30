@@ -1,4 +1,87 @@
 {
 	"modules-insts" : [
+	{
+		"coordination-module-inst" : {
+		"type" : "MobileBaseModule",
+		"inst-name" : "base",
+		"coordination-interfaces-instances" : [
+		{ "type" : "BaseCoordinationService",
+		"inst-name" : "base",
+		"component-inst" : "ComponentRobotinoBaseServer",
+		"services" : [{ "coordservice" : "baseState", "compservice" : "BaseStateQueryServiceAnsw"},{ "coordservice" : "bumperEvent", "compservice" : "BumperEventServiceOut"},{ "coordservice" : "batteryEvent", "compservice" : "BatteryEventServiceOut"}]
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "KBModule",
+		"inst-name" : "kb",
+		"coordination-interfaces-instances" : [
+		{ "type" : "KBCoordinationService",
+		"inst-name" : "kb",
+		"component-inst" : "ComponentKB",
+		"services" : [{ "coordservice" : "kbQuery", "compservice" : "kbQuery"},{ "coordservice" : "kbEvent", "compservice" : "kbEventServer"}]
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "LaserGenarationModule",
+		"inst-name" : "laserFromRGBDGen",
+		"coordination-interfaces-instances" : [
+		{ "type" : "LaserFromRGBDCoordinationService",
+		"inst-name" : "laserfromrgbd",
+		"component-inst" : "ComponentLaserFromRGBDServer",
+		"services" : []
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "CameraModule",
+		"inst-name" : "rgbdRS",
+		"coordination-interfaces-instances" : [
+		{ "type" : "ImageProvisionCoordinationService",
+		"inst-name" : "realsense",
+		"component-inst" : "ComponentRealSenseV2Server",
+		"services" : []
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "SlamModule",
+		"inst-name" : "SLAMLaser",
+		"coordination-interfaces-instances" : [
+		{ "type" : "SLAMCoordinationService",
+		"inst-name" : "gmapping",
+		"component-inst" : "ComponentGMapping",
+		"services" : []
+		} 
+		]
+		}
+	}
+	,
+	{
+		"coordination-module-inst" : {
+		"type" : "SlamModule",
+		"inst-name" : "SLAMRGBD",
+		"coordination-interfaces-instances" : [
+		{ "type" : "SLAMCoordinationService",
+		"inst-name" : "gmapping",
+		"component-inst" : "ComponentGMapping_rs",
+		"services" : []
+		} 
+		]
+		}
+	}
 	]
 }

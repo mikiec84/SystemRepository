@@ -1,0 +1,13 @@
+# This file is generated using the SmartMDSD Toolchain.
+# Any changes will be overwritten next time the deployment project
+# is deployed/run from within the SmartMDSD toolchain.
+
+REFERENCED_PROJECT_ComponentGMapping="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentGMapping"
+REFERENCED_PROJECT_ComponentKB="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentKB"
+REFERENCED_PROJECT_ComponentLaserFromRGBDServer="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentLaserFromRGBDServer"
+REFERENCED_PROJECT_ComponentRealSenseV2Server="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentRealSenseV2Server"
+REFERENCED_PROJECT_ComponentRobotinoBaseServer="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentRobotinoBaseServer"
+REFERENCED_PROJECT_ComponentRobotinoLaserServer="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/smartsoft_robotino_v3_git/components/ComponentRobotinoLaserServer"
+REFERENCED_PROJECT_ComponentTCLSequencer="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentTCLSequencer"
+REFERENCED_PROJECT_ComponentVisualization="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/ComponentVisualization"
+REFERENCED_PROJECT_SmartRobotConsole="/home/lutz_v3/SOFTWARE/smartsoft-ace-mdsd-v3/repos/ComponentRepository/SmartRobotConsole"

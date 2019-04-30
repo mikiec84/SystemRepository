@@ -95,10 +95,60 @@ ComponentInstance ComponentRobotinoBaseServer instantiates ComponentRobotinoBase
 		RequiredService personDetectionQueryClient		
 	ParameterStructInstance SystemComparingGamppingHokuyoVsRealSense.ComponentVisualization2
 	}
+	ComponentInstance ComponentKB instantiates ComponentKB
+	{
+		RequiredService kbChainedEntriesEventClient
+		ProvidedService kbEventServer
+		ProvidedService kbQuery
+	}
+	ComponentInstance ComponentTCLSequencer instantiates ComponentTCLSequencer
+	{
+	}
+	
 	Connection ComponentLaserFromRGBDServer.rgbdClient -> ComponentRealSenseV2Server.imagePushNewestServer
 	Connection ComponentRealSenseV2Server.basePushTimedClient -> ComponentRobotinoBaseServer.BaseStateServiceOut
 	Connection ComponentGMapping_rs.laserClient -> ComponentLaserFromRGBDServer.laserPushNewestServer
 	Connection ComponentGMapping.basePositionUpdateClient -> ComponentRobotinoBaseServer.LocalizationUpdateServiceIn
 	Connection ComponentRobotinoLaserServer.baseTimedClient -> ComponentRobotinoBaseServer.BaseStateServiceOut
 	Connection ComponentGMapping.laserClient -> ComponentRobotinoLaserServer.pushNewestServer
+	
+	BehaviorTaskRef BehaviorSLAMRGBdLaserCompare
+	
+	
+	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.base realizedby baseInst {
+			interfaceInstance base realizedby ComponentRobotinoBaseServer
+		}
+	}
+	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.kb realizedby kbModule {
+			interfaceInstance kb realizedby ComponentKB
+		}
+	}
+	
+	CoordinationModuleMapping { 
+		moduleInstance BehaviorSLAMRGBdLaserCompare.laserFromRGBDGen realizedby LaserFromRGBDModule { 
+			interfaceInstance laserfromrgbd realizedby ComponentLaserFromRGBDServer
+		}
+	}
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.rgbdRS realizedby RealsenseCameraModule {
+			interfaceInstance realsense realizedby ComponentRealSenseV2Server
+		}
+	}
+	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.SLAMLaser realizedby slamModule {
+			interfaceInstance gmapping realizedby ComponentGMapping
+		}
+	}
+	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.SLAMRGBD realizedby slamModule {
+			interfaceInstance gmapping realizedby ComponentGMapping_rs
+		}
+	}
+	
 }

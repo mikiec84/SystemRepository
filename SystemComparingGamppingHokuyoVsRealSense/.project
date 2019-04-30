@@ -3,12 +3,14 @@
 	<name>SystemComparingGamppingHokuyoVsRealSense</name>
 	<comment></comment>
 	<projects>
+		<project>BehaviorSLAMRGBdLaserCompare</project>
 		<project>ComponentGMapping</project>
+		<project>ComponentKB</project>
 		<project>ComponentLaserFromRGBDServer</project>
-		<project>ComponentLaserHokuyoURGServer</project>
 		<project>ComponentRealSenseV2Server</project>
 		<project>ComponentRobotinoBaseServer</project>
 		<project>ComponentRobotinoLaserServer</project>
+		<project>ComponentTCLSequencer</project>
 		<project>ComponentVisualization</project>
 		<project>SmartRobotConsole</project>
 	</projects>

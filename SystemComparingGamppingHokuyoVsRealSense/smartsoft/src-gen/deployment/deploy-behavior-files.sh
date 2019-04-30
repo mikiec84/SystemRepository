@@ -20,9 +20,12 @@
 
 
 COMP_INTERFACE_FILES="
+$SMART_ROOT_ACE/lib/libSLAMCoordinationService.so
+$SMART_ROOT_ACE/lib/libLaserFromRGBDCoordinationService.so
 $SMART_ROOT_ACE/lib/libImageProvisionCoordinationService.so
 $SMART_ROOT_ACE/lib/libBaseCoordinationService.so
 $SMART_ROOT_ACE/lib/libDefaultCoordinationService.so
+$SMART_ROOT_ACE/lib/libKBCoordinationService.so
 "
  
 BEHAVIOR_UTILITY_FILES="
