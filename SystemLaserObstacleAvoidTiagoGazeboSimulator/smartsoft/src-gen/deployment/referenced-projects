@@ -1,6 +1,0 @@
-# This file is generated using the SmartMDSD Toolchain.
-# Any changes will be overwritten next time the deployment project
-# is deployed/run from within the SmartMDSD toolchain.
-
-REFERENCED_PROJECT_ComponentLaserObstacleAvoid="/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/internal/ComponentRepository/ComponentLaserObstacleAvoid"
-REFERENCED_PROJECT_SmartGazeboBaseServer="/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/internal/ComponentRepository/SmartGazeboBaseServer"

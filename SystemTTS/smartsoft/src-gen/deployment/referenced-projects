@@ -1,6 +1,0 @@
-# This file is generated using the SmartMDSD Toolchain.
-# Any changes will be overwritten next time the deployment project
-# is deployed/run from within the SmartMDSD toolchain.
-
-REFERENCED_PROJECT_ComponentTTS="/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/internal/ComponentRepository/ComponentTTS"
-REFERENCED_PROJECT_ComponentTTSClient="/home/alexej/SOFTWARE/v3-smartsoft-repos/repos/internal/ComponentRepository/ComponentTTSClient"
