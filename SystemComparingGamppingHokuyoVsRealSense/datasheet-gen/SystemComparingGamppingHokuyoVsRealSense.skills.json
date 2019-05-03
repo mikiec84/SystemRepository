@@ -242,4 +242,72 @@
 }
 ]
 [
+{"skill" :
+	{ 
+		"name" : "startVisualizationOf",
+		"skill-definition-fqn" : "CommBasicObjects.VisualizationModule.startVisualizationOf",
+		"in-attribute" : {
+			"type" : "String",
+			"server" : "String",
+			"service" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "stopVisualizationOf",
+		"skill-definition-fqn" : "CommBasicObjects.VisualizationModule.stopVisualizationOf",
+		"in-attribute" : {
+			"type" : "String",
+			"server" : "String",
+			"service" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+}
+]
+[
+{"skill" :
+	{ 
+		"name" : "startVisualizationOf",
+		"skill-definition-fqn" : "CommBasicObjects.VisualizationModule.startVisualizationOf",
+		"in-attribute" : {
+			"type" : "String",
+			"server" : "String",
+			"service" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+},
+{"skill" :
+	{ 
+		"name" : "stopVisualizationOf",
+		"skill-definition-fqn" : "CommBasicObjects.VisualizationModule.stopVisualizationOf",
+		"in-attribute" : {
+			"type" : "String",
+			"server" : "String",
+			"service" : "String"
+		},
+		"out-attribute" : {
+		},
+		"results" : [ 
+			{ "result" : "SUCCESS", "result-value" : "OK" }
+		]
+	}
+}
+]
+[
 ]

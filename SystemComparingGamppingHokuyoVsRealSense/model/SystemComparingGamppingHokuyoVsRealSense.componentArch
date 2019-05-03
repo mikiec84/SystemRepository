@@ -151,4 +151,16 @@ ComponentInstance ComponentRobotinoBaseServer instantiates ComponentRobotinoBase
 		}
 	}
 	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.visLaser realizedby visualizationmod {
+			interfaceInstance vis realizedby ComponentVisualization
+		}
+	}
+	
+	CoordinationModuleMapping {
+		moduleInstance BehaviorSLAMRGBdLaserCompare.visRS realizedby visualizationmod {
+			interfaceInstance vis realizedby ComponentVisualization2
+		}
+	}
+	
 }
